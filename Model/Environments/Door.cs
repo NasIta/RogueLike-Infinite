@@ -1,11 +1,16 @@
 ﻿using System;
 
+using RogueLike.Model;
+
 namespace RogueLike.Model.Environments
 {
-	public class Door
+	[Serializable]
+	public class Door: Environment
 	{
 		public Door()
 		{
+			Id = 2;
+			Name = "Door";
 		}
 	}
 }

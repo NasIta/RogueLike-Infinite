@@ -36,7 +36,7 @@ namespace RogueLike.Model
 			}
 			else
 			{
-				Game.instance.ActiveScene = Game.instance.Scenes.CreateRectangleScene();
+				Game.instance.ActiveScene = Game.instance.Scenes.CreateRectangleScene(X, Y);
 			}
 		}
 	}

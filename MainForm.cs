@@ -31,10 +31,23 @@ namespace RogueLike
 			Start();
 		}
 
-		public void Start()
+		private void Start()
 		{
 			Game.StartNew();
 			Scene.LoadOrCreate(0, 0);
+			Game.instance.ActiveScene.Render();
+		}
+		int y = 0; 			// todo: delete this (>_< ) !!!
+		private void MainFormKeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.W) 
+			{
+				Scene.LoadOrCreate(0, ++y);
+			}
+			if (e.KeyCode == Keys.S) 
+			{
+				Scene.LoadOrCreate(0, --y);
+			}
 			Game.instance.ActiveScene.Render();
 		}
 	}
