@@ -1,0 +1,8 @@
+C:\Users\NasIta\Documents\SharpDevelop Projects\RogueLike\RogueLike\bin\Debug\RogueLike.exe.config
+C:\Users\NasIta\Documents\SharpDevelop Projects\RogueLike\RogueLike\bin\Debug\RogueLike.exe
+C:\Users\NasIta\Documents\SharpDevelop Projects\RogueLike\RogueLike\bin\Debug\RogueLike.pdb
+C:\Users\NasIta\Documents\SharpDevelop Projects\RogueLike\RogueLike\obj\Debug\RogueLike.csprojResolveAssemblyReference.cache
+C:\Users\NasIta\Documents\SharpDevelop Projects\RogueLike\RogueLike\obj\Debug\RogueLike.MainForm.resources
+C:\Users\NasIta\Documents\SharpDevelop Projects\RogueLike\RogueLike\obj\Debug\RogueLike.csproj.GenerateResource.Cache
+C:\Users\NasIta\Documents\SharpDevelop Projects\RogueLike\RogueLike\obj\Debug\RogueLike.exe
+C:\Users\NasIta\Documents\SharpDevelop Projects\RogueLike\RogueLike\obj\Debug\RogueLike.pdb
