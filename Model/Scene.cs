@@ -9,9 +9,9 @@ using RogueLike.Controllers;
 namespace RogueLike.Model
 {
 	[Serializable]
-	public class Scene: IContainer, IPosed
+	public class Scene: IPosed
 	{
-		public List<IUnique> Childrens {get; set;}
+		public List<GameObject> Childrens {get; set;}
 		public Point Position {get; set;}
 		
 		public Point Size {get; set;}

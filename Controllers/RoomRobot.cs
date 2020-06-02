@@ -16,7 +16,7 @@ namespace RogueLike.Controllers
 		
 		public static Scene CreateRectangleScene(this List<Scene> scenes, int X, int Y)
 		{
-			var scene = new Scene(){Childrens = new List<IUnique>(), Position = new Point(X, Y)};
+			var scene = new Scene(){Childrens = new List<GameObject>(), Position = new Point(X, Y)};
 			
 			scene.AddWalls();
 			scene.AddDoors();
@@ -60,7 +60,7 @@ namespace RogueLike.Controllers
 		
 		private static void WallToDoor(Scene scene, Point place)
 		{
-			int index = scene.Childrens.IndexOf((IUnique)scene.Childrens.Select(u => (GameObject)u).First(o => o.Position == place));
+			int index = scene.Childrens.IndexOf(scene.Childrens.Select(u => (GameObject)u).First(o => o.Position == place));
 			scene.Childrens.RemoveAt(index);
 		}
 		
@@ -84,16 +84,21 @@ namespace RogueLike.Controllers
 		{
 			if (Door.SelectedDoor == -1) 
 			{
-				scene.Childrens.Add(new Player(){Position = new Point(scene.Size.X / 2 + 1, scene.Size.Y / 2 + 1)});
+				Player.instance = new Player(){Position = new Point(scene.Size.X / 2 + 1, scene.Size.Y / 2 + 1)};
+				
+				scene.Childrens.Add(Player.instance);
+				
+				ScreenUpdater.UpdateAllStats();
 			}
 			else
 			{
-				scene.Childrens.Add(new Player());
+				if (!scene.Childrens.Contains(Player.instance))
+				{
+					scene.Childrens.Add(Player.instance);
+				}
 				
 				Player.SetToDoor();
 			}
-			
-			Player.instance = (Player)scene.Childrens.Last();
 		}
 		
 		

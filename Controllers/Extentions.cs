@@ -25,5 +25,10 @@ namespace RogueLike
 		{
 			return Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
 		}
+		
+		public static int Normalize(this int x)
+		{
+			return x < 0 ? 0 : x;
+		}
 	}
 }

@@ -40,6 +40,14 @@ namespace RogueLike
 		
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
+			if (keyData == Keys.Q) 
+			{
+				if (Player.instance.SelectedObject != null) 
+				{
+					(Player.instance.SelectedObject as RogueLike.Model.Interfaces.IUsable).Use();
+				}
+			}
+			
 			if (keyData == Keys.Up) 
 			{
 				Player.Move(0, -1);

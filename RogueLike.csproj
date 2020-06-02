@@ -62,7 +62,6 @@
     <Compile Include="Model\Environments\Wall.cs" />
     <Compile Include="Model\Game.cs" />
     <Compile Include="Model\GameObject.cs" />
-    <Compile Include="Model\Interfaces\IContainer.cs" />
     <Compile Include="Model\Interfaces\IDestructible.cs" />
     <Compile Include="Model\Interfaces\IPosed.cs" />
     <Compile Include="Model\Interfaces\IRenderizable.cs" />
@@ -75,6 +74,7 @@
     <Compile Include="Model\Scene.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View-Model\ScreenUpdater.cs" />
     <Compile Include="View\RenderExtentions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +91,7 @@
     <Folder Include="Controllers" />
     <Folder Include="Model\Environments" />
     <Folder Include="Model\Items" />
+    <Folder Include="View-Model" />
     <Folder Include="View" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

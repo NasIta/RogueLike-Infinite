@@ -23,7 +23,7 @@ namespace RogueLike.View
 				_graph = Graphics.FromImage(_bmp);
 			}
 			
-			_graph.Clear(Color.Black);
+			_graph.Clear(Color.DarkRed);
 			
 			foreach (var gameObject in scene.Childrens) 
 			{
@@ -48,6 +48,7 @@ namespace RogueLike.View
 				if (gameObject is Wall) 
 				{	
 					_graph.FillRectangle(new SolidBrush(Color.Firebrick), rect);
+					_graph.DrawLine(new Pen(Color.Chocolate), rect.X, rect.Y + modifier / 2, rect.X + modifier - 1, rect.Y + modifier / 2);
 				}
 				else if (gameObject is Player) 
 				{
@@ -64,6 +65,11 @@ namespace RogueLike.View
 				if (Player.instance.SelectedObject == gameObject) 
 				{
 					_graph.DrawRectangle(new Pen(Color.Yellow, modifier / 10), rect);
+					ScreenUpdater.OnSelected(gameObject);
+				}
+				else if(Player.instance.SelectedObject == null)
+				{
+					ScreenUpdater.OnUnselected();
 				}
 			}
 		}
