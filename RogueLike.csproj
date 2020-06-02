@@ -57,6 +57,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Environment.cs" />
+    <Compile Include="Model\Environments\Chest.cs" />
     <Compile Include="Model\Environments\Door.cs" />
     <Compile Include="Model\Environments\Wall.cs" />
     <Compile Include="Model\Game.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Model\Interfaces\IDestructible.cs" />
     <Compile Include="Model\Interfaces\IPosed.cs" />
     <Compile Include="Model\Interfaces\IRenderizable.cs" />
+    <Compile Include="Model\Interfaces\IUsable.cs" />
     <Compile Include="Model\Interfaces\ISolid.cs" />
     <Compile Include="Model\Interfaces\IUnique.cs" />
     <Compile Include="Model\Item.cs" />

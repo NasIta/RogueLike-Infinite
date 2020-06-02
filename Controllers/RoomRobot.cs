@@ -39,6 +39,21 @@ namespace RogueLike.Controllers
 					{
 						scene.Childrens.Add(new Wall(){Position = new Point(x, y)});
 					}
+					else
+					{
+						if (scene.Position == new Point(0, 0))
+						{
+							continue;
+						}
+						
+						var content = GetRandomContent();
+						
+						if (content != null) 
+						{
+							content.Position = new Point(x, y);
+							scene.Childrens.Add(content);
+						}
+					}
 				}
 			}
 		}
@@ -51,8 +66,6 @@ namespace RogueLike.Controllers
 		
 		private static void AddDoors(this Scene scene)
 		{
-			_doorId = 0;
-			
 			var place = new Point(scene.Size.X + 1, _rnd.Next(1, scene.Size.Y + 1));
 			WallToDoor(scene, place);
 			scene.Childrens.Add(new Door(){Position = place.Add(1, 0), Direction = 0});
@@ -81,6 +94,16 @@ namespace RogueLike.Controllers
 			}
 			
 			Player.instance = (Player)scene.Childrens.Last();
+		}
+		
+		
+		private static GameObject GetRandomContent()
+		{
+			if (_rnd.NextDouble() < 0.01)
+			{
+				return new Chest();
+			}
+			return null;
 		}
 	}
 }

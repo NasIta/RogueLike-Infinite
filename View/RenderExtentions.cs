@@ -49,10 +49,21 @@ namespace RogueLike.View
 				{	
 					_graph.FillRectangle(new SolidBrush(Color.Firebrick), rect);
 				}
-				
-				if (gameObject is Player) 
+				else if (gameObject is Player) 
 				{
 					_graph.FillEllipse(new SolidBrush(Color.White), rect);
+				}
+				else if (gameObject is Chest) 
+				{
+					_graph.FillRectangle(new SolidBrush(Color.Chocolate), rect);
+					_graph.FillRectangle(new SolidBrush(Color.Brown), rect.X, rect.Y + modifier / 3 * 2, modifier, modifier - modifier / 3 * 2);
+					_graph.FillRectangle(new SolidBrush(Color.Gold), rect.X + modifier / 2 - 1, rect.Y + modifier / 2 , 2, 4);
+					_graph.DrawLine(new Pen(Color.FromArgb(150, 0, 0, 0), modifier / 10), rect.X + 1, rect.Y + 1, rect.X + modifier - 1, rect.Y + 1);
+				}
+				
+				if (Player.instance.SelectedObject == gameObject) 
+				{
+					_graph.DrawRectangle(new Pen(Color.Yellow, modifier / 10), rect);
 				}
 			}
 		}

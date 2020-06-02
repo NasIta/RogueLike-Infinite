@@ -14,6 +14,8 @@ namespace RogueLike.Model
 		public static Player instance {get; set;}
 		public List<IUnique> Childrens {get; set;}
 		
+		public GameObject SelectedObject {get; set;}
+		
 		public static void Move(int dx, int dy)
 		{
 			var frontObject = instance.Position.LookAt(dx, dy);
@@ -29,10 +31,8 @@ namespace RogueLike.Model
 			if (!(frontObject is ISolid))
 			{
 				Player.instance.Position = Player.instance.Position.Add(dx, dy);
-			}
-			else
-			{
 				
+				CheckSelectableItems();
 			}
 		}
 		
@@ -42,6 +42,17 @@ namespace RogueLike.Model
 				.Where(u => u is Door)
 				.First(u => (u as Door).Direction == (Door.SelectedDoor + 2) % 4)).Position;
 			instance.Position = spawnPlace;
+		}
+
+		private static void CheckSelectableItems()
+		{
+			instance.SelectedObject = (GameObject)Game.instance.ActiveScene.Childrens
+				.FirstOrDefault(
+					u => 
+						(u as GameObject).Position.Distance(instance.Position) < 1.5 
+						&& u is IUsable 
+						&& !(u as IUsable).Used
+				);
 		}
 	}
 }
