@@ -12,6 +12,7 @@ namespace RogueLike.Controllers
 	public static class RoomRobot
 	{
 		private static Random _rnd = new Random();
+		private static int _doorId {get; set;}
 		
 		public static Scene CreateRectangleScene(this List<Scene> scenes, int X, int Y)
 		{
@@ -19,6 +20,7 @@ namespace RogueLike.Controllers
 			
 			scene.AddWalls();
 			scene.AddDoors();
+			scene.AddPlayer();
 			
 			scenes.Add(scene);
 			
@@ -44,19 +46,41 @@ namespace RogueLike.Controllers
 		private static void WallToDoor(Scene scene, Point place)
 		{
 			int index = scene.Childrens.IndexOf((IUnique)scene.Childrens.Select(u => (GameObject)u).First(o => o.Position == place));
-			scene.Childrens[index] = new Door(){Position = (scene.Childrens[index] as GameObject).Position};
+			scene.Childrens.RemoveAt(index);
 		}
 		
 		private static void AddDoors(this Scene scene)
 		{
-			var place = new Point(_rnd.Next(1, scene.Size.X + 1), 0);
+			_doorId = 0;
+			
+			var place = new Point(scene.Size.X + 1, _rnd.Next(1, scene.Size.Y + 1));
 			WallToDoor(scene, place);
-			place = new Point(0, _rnd.Next(1, scene.Size.Y + 1));
-			WallToDoor(scene, place);
-			place = new Point(scene.Size.X + 1, _rnd.Next(1, scene.Size.Y + 1));
-			WallToDoor(scene, place);
+			scene.Childrens.Add(new Door(){Position = place.Add(1, 0), Direction = 0});
 			place = new Point(_rnd.Next(1, scene.Size.X + 1), scene.Size.Y + 1);
 			WallToDoor(scene, place);
+			scene.Childrens.Add(new Door(){Position = place.Add(0, 1), Direction = 1});
+			place = new Point(0, _rnd.Next(1, scene.Size.Y + 1));
+			WallToDoor(scene, place);
+			scene.Childrens.Add(new Door(){Position = place.Add(-1, 0), Direction = 2});
+			place = new Point(_rnd.Next(1, scene.Size.X + 1), 0);
+			WallToDoor(scene, place);
+			scene.Childrens.Add(new Door(){Position = place.Add(0, -1), Direction = 3});
+		}
+		
+		private static void AddPlayer(this Scene scene)
+		{
+			if (Door.SelectedDoor == -1) 
+			{
+				scene.Childrens.Add(new Player(){Position = new Point(scene.Size.X / 2 + 1, scene.Size.Y / 2 + 1)});
+			}
+			else
+			{
+				scene.Childrens.Add(new Player());
+				
+				Player.SetToDoor();
+			}
+			
+			Player.instance = (Player)scene.Childrens.Last();
 		}
 	}
 }

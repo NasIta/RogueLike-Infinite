@@ -37,18 +37,27 @@ namespace RogueLike
 			Scene.LoadOrCreate(0, 0);
 			Game.instance.ActiveScene.Render();
 		}
-		int y = 0; 			// todo: delete this (>_< ) !!!
-		private void MainFormKeyDown(object sender, KeyEventArgs e)
+		
+		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
-			if (e.KeyCode == Keys.W) 
+			if (keyData == Keys.Up) 
 			{
-				Scene.LoadOrCreate(0, ++y);
+				Player.Move(0, -1);
 			}
-			if (e.KeyCode == Keys.S) 
+			if (keyData == Keys.Down) 
 			{
-				Scene.LoadOrCreate(0, --y);
+				Player.Move(0, 1);
+			}
+			if (keyData == Keys.Left) 
+			{
+				Player.Move(-1, 0);
+			}
+			if (keyData == Keys.Right) 
+			{
+				Player.Move(1, 0);
 			}
 			Game.instance.ActiveScene.Render();
+			return true;
 		}
 	}
 }

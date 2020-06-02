@@ -4,7 +4,7 @@ using RogueLike.Model.Interfaces;
 
 namespace RogueLike.Model
 {
-	public class Mob: GameObject, IDestructible
+	public class Mob: GameObject, IDestructible, ISolid
 	{
 		public int HealthPoints {get; set;}
 		public int MaxHealthPoints {get; set;}

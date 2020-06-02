@@ -1,11 +1,12 @@
 ﻿using System;
 
 using RogueLike.Model;
+using RogueLike.Model.Interfaces;
 
 namespace RogueLike.Model.Environments
 {
 	[Serializable]
-	public class Wall: Environment
+	public class Wall: Environment, ISolid
 	{
 		public Wall()
 		{

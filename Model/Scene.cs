@@ -38,6 +38,13 @@ namespace RogueLike.Model
 			{
 				Game.instance.ActiveScene = Game.instance.Scenes.CreateRectangleScene(X, Y);
 			}
+			
+			Player.instance = (Player)Game.instance.ActiveScene.Childrens.FirstOrDefault(u => u is Player);
+		}
+		
+		public static void LoadOrCreateAt(int dx, int dy)
+		{
+			LoadOrCreate(Game.instance.ActiveScene.Position.X + dx, Game.instance.ActiveScene.Position.Y + dy);
 		}
 	}
 }

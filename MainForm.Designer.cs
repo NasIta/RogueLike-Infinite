@@ -137,7 +137,6 @@ namespace RogueLike
 			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "RogueLike";
-			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainFormKeyDown);
 			this.headerPanel.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();

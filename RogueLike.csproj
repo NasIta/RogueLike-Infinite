@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Extentions.cs" />
     <Compile Include="Controllers\RoomRobot.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
@@ -64,6 +65,7 @@
     <Compile Include="Model\Interfaces\IDestructible.cs" />
     <Compile Include="Model\Interfaces\IPosed.cs" />
     <Compile Include="Model\Interfaces\IRenderizable.cs" />
+    <Compile Include="Model\Interfaces\ISolid.cs" />
     <Compile Include="Model\Interfaces\IUnique.cs" />
     <Compile Include="Model\Item.cs" />
     <Compile Include="Model\Mob.cs" />
