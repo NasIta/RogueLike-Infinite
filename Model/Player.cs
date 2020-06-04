@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 using RogueLike.Model.Interfaces;
 using RogueLike.Model.Environments;
+using RogueLike.View;
 
 namespace RogueLike.Model
 {
@@ -41,9 +42,17 @@ namespace RogueLike.Model
 			
 			MaxInventoryCount = 15;
 			Inventory = new List<Item>();
+			
+			for (int i = 0; i < 35; i++)
+				Inventory.Add(new Items.Food(){HungerRecovery = 10});
 		}
 		
 		public static void Die()
+		{
+			
+		}
+		
+		public static void PickupItem(Item item)
 		{
 			
 		}
@@ -127,7 +136,7 @@ namespace RogueLike.Model
 			instance.Position = spawnPlace;
 		}
 
-		private static void CheckSelectableItems()
+		public static void CheckSelectableItems()
 		{
 			instance.SelectedObject = (GameObject)Game.instance.ActiveScene.Childrens
 				.FirstOrDefault(
@@ -136,6 +145,49 @@ namespace RogueLike.Model
 						&& u is IUsable 
 						&& !(u as IUsable).Used
 				);
+			
+			if (instance.SelectedObject != null)
+			{
+				ScreenUpdater.OnSelected(instance.SelectedObject);
+			}
+			else
+			{
+				ScreenUpdater.OnUnselected();
+			}
+		}
+		
+		public static void SendKey(Keys Key)
+		{
+			if (Key == Keys.Q) 
+			{
+				if (instance.SelectedObject != null) 
+				{
+					(instance.SelectedObject as IUsable).Use();
+				}
+			}
+			
+			if (Key == Keys.E) 
+			{
+				InventoryPanel.Create();
+			}
+			
+			if (Key == Keys.Up) 
+			{
+				Move(0, -1);
+			}
+			if (Key == Keys.Down) 
+			{
+				Move(0, 1);
+			}
+			if (Key == Keys.Left) 
+			{
+				Move(-1, 0);
+			}
+			if (Key == Keys.Right) 
+			{
+				Move(1, 0);
+			}
+			Game.instance.ActiveScene.Render();
 		}
 	}
 }

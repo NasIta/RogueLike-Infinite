@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Drawing;
+using System.Collections.Generic;
 
+using RogueLike.View;
 using RogueLike.Model;
 using RogueLike.Model.Interfaces;
 
@@ -29,6 +31,24 @@ namespace RogueLike
 		public static int Normalize(this int x)
 		{
 			return x < 0 ? 0 : x;
+		}
+		
+		public static int Normalize(this int x, int max)
+		{
+			x = x.Normalize();
+			
+			return x > max ? max : x;
+		}
+		
+		public static Rectangle GetRectangle(this IPosed obj)
+		{
+			return new Rectangle()
+			{
+				X = obj.Position.X * RenderExtentions.modifier,
+				Y = obj.Position.Y * RenderExtentions.modifier,
+				Width = RenderExtentions.modifier,
+				Height = RenderExtentions.modifier
+			};
 		}
 	}
 }

@@ -21,4 +21,10 @@ namespace RogueLike.Model
 			Scenes = new List<Scene>();
 		}
 	}
+	
+	public enum GameStates
+	{
+		Play,
+		Inventory
+	}
 }

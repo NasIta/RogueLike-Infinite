@@ -12,6 +12,7 @@ namespace RogueLike
 	public partial class MainForm : Form
 	{
 		public static MainForm instance {get; private set;}
+		public static GameStates GameState;
 		
 		public MainForm()
 		{
@@ -40,31 +41,14 @@ namespace RogueLike
 		
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
-			if (keyData == Keys.Q) 
+			if (GameState == GameStates.Play) 
 			{
-				if (Player.instance.SelectedObject != null) 
-				{
-					(Player.instance.SelectedObject as RogueLike.Model.Interfaces.IUsable).Use();
-				}
+				Player.SendKey(keyData);
 			}
-			
-			if (keyData == Keys.Up) 
+			else if (GameState == GameStates.Inventory) 
 			{
-				Player.Move(0, -1);
+				InventoryPanel.SendKey(keyData);
 			}
-			if (keyData == Keys.Down) 
-			{
-				Player.Move(0, 1);
-			}
-			if (keyData == Keys.Left) 
-			{
-				Player.Move(-1, 0);
-			}
-			if (keyData == Keys.Right) 
-			{
-				Player.Move(1, 0);
-			}
-			Game.instance.ActiveScene.Render();
 			return true;
 		}
 	}

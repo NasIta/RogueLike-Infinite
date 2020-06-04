@@ -17,7 +17,6 @@ namespace RogueLike
 		private System.Windows.Forms.Panel headerPanel;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.PictureBox pictureBox1;
 		public System.Windows.Forms.PictureBox pictureBox;
 		private System.Windows.Forms.Button button2;
 		public System.Windows.Forms.Panel DialogPanel;
@@ -56,12 +55,12 @@ namespace RogueLike
 			this.headerPanel = new System.Windows.Forms.Panel();
 			this.label1 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.pictureBox = new System.Windows.Forms.PictureBox();
 			this.button2 = new System.Windows.Forms.Button();
 			this.DialogPanel = new System.Windows.Forms.Panel();
 			this.DialogLabel = new System.Windows.Forms.Label();
 			this.StatsPanel = new System.Windows.Forms.Panel();
+			this.InventoryLabel = new System.Windows.Forms.Label();
 			this.ExperienceLabel = new System.Windows.Forms.Label();
 			this.LevelLabel = new System.Windows.Forms.Label();
 			this.StrengthLabel = new System.Windows.Forms.Label();
@@ -69,9 +68,7 @@ namespace RogueLike
 			this.HungerLabel = new System.Windows.Forms.Label();
 			this.ManaPointsLabel = new System.Windows.Forms.Label();
 			this.HealhPointsLabel = new System.Windows.Forms.Label();
-			this.InventoryLabel = new System.Windows.Forms.Label();
 			this.headerPanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.DialogPanel.SuspendLayout();
 			this.StatsPanel.SuspendLayout();
@@ -113,16 +110,6 @@ namespace RogueLike
 			this.button1.Text = "X";
 			this.button1.UseVisualStyleBackColor = false;
 			this.button1.Click += new System.EventHandler(this.Button1Click);
-			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.BackColor = System.Drawing.Color.White;
-			this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.pictureBox1.Location = new System.Drawing.Point(0, 22);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(818, 462);
-			this.pictureBox1.TabIndex = 1;
-			this.pictureBox1.TabStop = false;
 			// 
 			// pictureBox
 			// 
@@ -187,6 +174,16 @@ namespace RogueLike
 			this.StatsPanel.Name = "StatsPanel";
 			this.StatsPanel.Size = new System.Drawing.Size(199, 445);
 			this.StatsPanel.TabIndex = 5;
+			// 
+			// InventoryLabel
+			// 
+			this.InventoryLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.InventoryLabel.ForeColor = System.Drawing.Color.Yellow;
+			this.InventoryLabel.Location = new System.Drawing.Point(3, 316);
+			this.InventoryLabel.Name = "InventoryLabel";
+			this.InventoryLabel.Size = new System.Drawing.Size(193, 28);
+			this.InventoryLabel.TabIndex = 0;
+			this.InventoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// ExperienceLabel
 			// 
@@ -258,16 +255,6 @@ namespace RogueLike
 			this.HealhPointsLabel.TabIndex = 0;
 			this.HealhPointsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// InventoryLabel
-			// 
-			this.InventoryLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.InventoryLabel.ForeColor = System.Drawing.Color.Yellow;
-			this.InventoryLabel.Location = new System.Drawing.Point(3, 316);
-			this.InventoryLabel.Name = "InventoryLabel";
-			this.InventoryLabel.Size = new System.Drawing.Size(193, 28);
-			this.InventoryLabel.TabIndex = 0;
-			this.InventoryLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,7 +264,6 @@ namespace RogueLike
 			this.Controls.Add(this.DialogPanel);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.pictureBox);
-			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.headerPanel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.KeyPreview = true;
@@ -285,7 +271,6 @@ namespace RogueLike
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "RogueLike";
 			this.headerPanel.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			this.DialogPanel.ResumeLayout(false);
 			this.StatsPanel.ResumeLayout(false);

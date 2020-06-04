@@ -10,7 +10,7 @@ namespace RogueLike.View
 {
 	public static class RenderExtentions
 	{
-		const int modifier = 20;
+		public const int modifier = 20;
 		
 		private static Bitmap _bmp {get; set;}
 		private static Graphics _graph {get; set;}
@@ -31,19 +31,22 @@ namespace RogueLike.View
 			}
 			
 			MainForm.instance.pictureBox.Image = _bmp;
+			
+			if (Player.instance.SelectedObject != null) 
+			{
+				_graph.DrawRectangle(new Pen(Color.Yellow, modifier / 10), Player.instance.SelectedObject.GetRectangle());
+			}
+			else
+			{
+				ScreenUpdater.OnUnselected();
+			}
 		}
 		
 		private static void Render(this GameObject gameObject)
 		{		
 			if (gameObject as IRenderizable != null)
 			{
-				var rect = new Rectangle()
-				{
-					X = gameObject.Position.X * modifier,
-					Y = gameObject.Position.Y * modifier,
-					Width = modifier,
-					Height = modifier
-				};
+				var rect = gameObject.GetRectangle();
 				
 				if (gameObject is Wall) 
 				{	
@@ -60,16 +63,6 @@ namespace RogueLike.View
 					_graph.FillRectangle(new SolidBrush(Color.Brown), rect.X, rect.Y + modifier / 3 * 2, modifier, modifier - modifier / 3 * 2);
 					_graph.FillRectangle(new SolidBrush(Color.Gold), rect.X + modifier / 2 - 1, rect.Y + modifier / 2 , 2, 4);
 					_graph.DrawLine(new Pen(Color.FromArgb(150, 0, 0, 0), modifier / 10), rect.X + 1, rect.Y + 1, rect.X + modifier - 1, rect.Y + 1);
-				}
-				
-				if (Player.instance.SelectedObject == gameObject) 
-				{
-					_graph.DrawRectangle(new Pen(Color.Yellow, modifier / 10), rect);
-					ScreenUpdater.OnSelected(gameObject);
-				}
-				else if(Player.instance.SelectedObject == null)
-				{
-					ScreenUpdater.OnUnselected();
 				}
 			}
 		}
